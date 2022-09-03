@@ -15,32 +15,33 @@ private void calEmiPersonal(double principalAmount, int tenure) {
 		emi=(principalAmount+interestAmount)/tenure;
 		
 	}
-private void calEmiBorrow(double principalAmount, int tenure) {
+private double calEmiBorrow(double principalAmount, int tenure) {
 	
 	interestAmount=(principalAmount/10);
 	emi=(principalAmount+interestAmount)/tenure;
-	
+	 return emi;
 }
 
-private void calEmiEducation(double principalAmount, int tenure) {
+public double calEmiEducation(double principalAmount, int tenure) {
 	
 	interestAmount=(principalAmount/10);
 	emi=(principalAmount+interestAmount)/tenure;
 	
     double newPrincipleAmount= principalAmount+(emi+tenure);
-	
+
 	double newInterstAmount=(newPrincipleAmount/10);
 	double newEmi =(newPrincipleAmount+interestAmount)/2;
 	
+	return  newEmi;
 	
 	
 }
 
-private void calEmiEntrepreneur(double principalAmount, int tenure) {
+public double calEmiEntrepreneur(double principalAmount, int tenure) {
 	
 	interestAmount=(principalAmount/15);
 	emi=(principalAmount+interestAmount)/tenure;
-	
+	return emi;
 }
 
 

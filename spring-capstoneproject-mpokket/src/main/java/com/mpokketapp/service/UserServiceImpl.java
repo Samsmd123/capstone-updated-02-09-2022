@@ -13,6 +13,7 @@ import com.mpokketapp.repository.IUserRepository;
 public class UserServiceImpl implements IUserService {
 	
 	IUserRepository userRepository;
+	
 	@Autowired
 	public void setUserRepository(IUserRepository userRepository) {
 		this.userRepository = userRepository;
@@ -25,7 +26,7 @@ public class UserServiceImpl implements IUserService {
 
 	@Override
 	public void updateUser(User user) {
-		 userRepository.save(user);
+		// userRepository.save(user);
 		
 	}
 
@@ -49,8 +50,8 @@ public class UserServiceImpl implements IUserService {
 
 	@Override
 	public User getByID(int userId) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return userRepository.findByID(userId);
 	}
 
 	@Override

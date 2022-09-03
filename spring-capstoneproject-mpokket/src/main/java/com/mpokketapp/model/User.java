@@ -3,17 +3,29 @@ package com.mpokketapp.model;
 import java.time.LocalDate;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 @Entity
 public class User {
 	private String userName;
+	@Id
+	@GeneratedValue(strategy =GenerationType.AUTO,generator ="user_gen")
+	@SequenceGenerator(name = "user_gen",sequenceName = "user_sequence")
 	private String userId;
 	private LocalDate dob;
+	@Enumerated
 	private String  userType;
-	@OneToOne
-	@JoinColumn(name= "loan_id")
+	@ManyToMany
+	@JoinColumn(name = "loanId")
 	Set<Loan> loan;
 	public User() {
 		super();

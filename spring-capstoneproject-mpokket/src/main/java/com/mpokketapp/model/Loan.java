@@ -1,18 +1,33 @@
 package com.mpokketapp.model;
 
+
+
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 
 @Entity
 public class Loan {
 	
-	
-	private String  loanType;
+	@Enumerated(EnumType.STRING)
+	private Loan  loanType;
+
+	@Id
+	@GeneratedValue(strategy =GenerationType.AUTO,generator ="loan_gen")
+	@SequenceGenerator(name = "loan_gen",sequenceName = "loan_sequence",initialValue =1001,allocationSize =1)
 	private Integer loanId;
-	@OneToMany(mappedBy = "Loan") 
+	@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+	@JoinColumn(name ="userId")
 	Set<User> user;
 	private Double principalAmount;
 	private Double emi;
@@ -23,7 +38,7 @@ public class Loan {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Loan( String loanType, Double principalAmount, Double emi, Integer duration) {
+	public Loan( Loan loanType, Double principalAmount, Double emi, Integer duration) {
 		super();
 		
 		this.loanType = loanType;
@@ -33,10 +48,10 @@ public class Loan {
 	}
 
 	
-	public String getLoanType() {
+	public Loan getLoanType() {
 		return loanType;
 	}
-	public void setLoanType(String loanType) {
+	public void setLoanType(Loan loanType) {
 		this.loanType = loanType;
 	}
 	public Integer getLoanId() {

@@ -25,9 +25,6 @@ public class LoanServiceImpl implements ILoanService{
 		
 	}
 	
-		
-	
-
 	@Override
 	public List<Loan> getAll() {
 		
@@ -48,7 +45,7 @@ public class LoanServiceImpl implements ILoanService{
 
 	@Override
 	public List<Loan> getByPrincipalAmountAndLoanType(double principalAmount, String loanType) {
-		// TODO Auto-generated method stub
+
 		return null;
 	}
 

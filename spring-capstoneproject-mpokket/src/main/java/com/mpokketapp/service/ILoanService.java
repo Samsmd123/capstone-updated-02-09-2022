@@ -3,7 +3,7 @@ package com.mpokketapp.service;
 import java.util.List;
 
 import com.mpokketapp.model.Loan;
-import com.mpokketapp.model.User;
+
 
 public interface ILoanService {
 	
